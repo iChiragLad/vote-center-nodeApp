@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  /*padding: 50px;*/
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -8,9 +8,8 @@ a {
 }
 
 .navbar {
-  margin:0; /*add this*/
+  margin: 0px; /*add this*/
 }
 .gridMargin{
-  margin-bottom: 65px;
   margin-top: 50px;
 }
