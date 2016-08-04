@@ -13,5 +13,8 @@ router.get('/login', function(req, res, next) {
 router.get('/signup', function(req, res, next) {
   res.render('pages/signup', {'title' : 'VoteCenter - Sign up'});
 });
+router.get('/settings', function(req, res, next){
+  res.render('pages/settings', {'title' : 'VoteCenter - Change password'});
+});
 
 module.exports = router;

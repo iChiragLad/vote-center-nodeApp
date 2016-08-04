@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
-    <title><%= title %></title>
-    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
-    <link href="stylesheets/style.css" rel="stylesheet">
-</head>
-<body>
-<nav class="navbar navbar-default" role = "navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="https://vote-center.herokuapp.com">VoteCenter</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav">
-                <li><a href="https://vote-center.herokuapp.com">Home</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="https://vote-center.herokuapp.com/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                <li><a href="https://vote-center.herokuapp.com/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
-<div class="jumbotron" style="background-color: #28a4c9">
-    <div class="container text-center">
-        <h1>Vote Center</h1>
-        <h3>Platform to get opinions</h3>
+<% var title = 'VoteCenter - Sign up' %>
+<% include ../partials/Head %>
+
+<body>
+
+<% var indexTab = ""%>
+<% var loginTab = ""%>
+<% var signupTab = "active"%>
+<% include ../partials/outerNav %>
+
+<% include ../partials/outerJumbotron %>
+
+<div class="container-fluid">
+    <!-- Example row of columns -->
+    <div class="row text-center">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 col-xs-10 col-xs-offset-1">
+            <form >
+                <h2 >New to VoteCenter? Sign up!</h2><br>
+                <label for="inputName" class="sr-only">Name</label>
+                <input type="text" id="inputName" class="form-control" placeholder="Name" required autofocus>
+                <label for="inputEmail" class="sr-only">Email address</label>
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address">
+                <label for="inputPassword" class="sr-only">Password</label>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <br>
+                <div class="text-left">
+                    <button class="btn btn-primary btn-block" type="submit">Sign up</button>
+                    <h6 class="text-center"><span class="label label-default">-- or --</span></h6>
+                    <button class="btn btn-block" style="background-color: #00B7FF" type="submit"><span><img src="images/twitter.png"></span> Connect with twitter</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
+<br>
+<br>
 
-<% include ../partials/signup %>
+<% include ../partials/footer %>
 
-<footer class="footer" style="background-color: #efefef">
-    <div class="container-fluid">
-        <p class="text-muted text-center">&copy; 2016 Design and Maintained by - Chirag Lad</p>
-    </div>
-</footer>
-
-<script src="javascripts/jquery-3.1.0.min.js" rel="script"></script>
-<script src="javascripts/bootstrap.min.js" rel="script"></script>
 </body>
 </html>

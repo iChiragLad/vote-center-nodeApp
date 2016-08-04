@@ -4,14 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongoose = require('mongoose');
+
 var url = "mongodb://chirag:admin@ds031835.mlab.com:31835/vote_test";
 mongoose.connect(url);
 var db = mongoose.connection;
 
 db.on('error', function () {
-  console.log('error..........');
+  console.log('error connecting to db.......');
 });
 db.once('open', function () {
   console.log('Connected to db......');
