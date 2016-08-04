@@ -5,6 +5,18 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var mongoose = require('mongoose');
+var url = "mongodb://chirag:admin@ds031835.mlab.com:31835/vote_test";
+mongoose.connect(url);
+var db = mongoose.connection;
+
+db.on('error', function () {
+  console.log('error..........');
+});
+db.once('open', function () {
+  console.log('Connected to db......');
+});
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
 

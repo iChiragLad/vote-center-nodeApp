@@ -12,7 +12,11 @@ router.get('/', function(req, res, next) {
 });
 router.post('/dashboard', function(req, res, next){
   console.log(req.body);
-  res.render('pages/dashboard', {'title':'VoteCenter - Dashboard'});
+  res.render('pages/newpoll', {'title':'VoteCenter - Dashboard'});
+});
+router.get('/dashboard', function(req, res, next){
+  console.log(req.body);
+  res.render('pages/newpoll', {'title':'VoteCenter - Dashboard'});
 });
 
 module.exports = router;

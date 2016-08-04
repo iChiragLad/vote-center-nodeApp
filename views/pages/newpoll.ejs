@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title> <%= title %> </title>
+    <link href="stylesheets/bootstrap.min.css" rel="stylesheet">
+    <link href="stylesheets/style.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-default" role = "navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">VoteCenter</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <p class="navbar-text "><span class="glyphicon glyphicon-user"></span> <a href="#" class="navbar-link">Mark Otto</a></p>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-cog"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://vote-center.herokuapp.com/users/changePassword">Change password</a></li>
+                    </ul>
+                </li>
+                <li><a href="https://vote-center.herokuapp.com"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<div class="jumbotron" style="background-color: #28a4c9">
+    <div class="container text-center">
+        <h1>Vote Center</h1>
+        <h4>Hey! welcome back, what would you like to do today?</h4><br>
+        <p>
+            <a class="btn btn-default btn-lg" style="background-color: #3e8f3e" href="http://localhost:3000/users/dashboard" role="button">New Poll</a>
+            <a class="btn btn-default btn-lg" style="background-color: #843534" href="#" role="button">My Polls</a>
+        </p>
+    </div>
+</div>
+
+<% include ../partials/newpoll.ejs %>
+
+<footer class="footer" style="background-color: #efefef">
+    <div class="container-fluid">
+        <p class="text-muted text-center">&copy; 2016 Design and Maintained by - Chirag Lad</p>
+    </div>
+</footer>
+
+<script src="javascripts/jquery-3.1.0.min.js" rel="script"></script>
+<script src="javascripts/bootstrap.min.js" rel="script"></script>
+</body>
+</html>
