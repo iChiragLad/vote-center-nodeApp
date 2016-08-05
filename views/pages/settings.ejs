@@ -5,19 +5,21 @@
 <% include ../partials/Head %>
 
 <body>
+<% var usernm = username %>
 <% include ../partials/innerNav %>
 
 <div class="container-fluid">
     <div class="row text-center">
         <div class="col-sm-10 col-sm-offset-1 col-md-6 col-md-offset-3">
-            <form action="/users/changepassword" method="post">
+            <% var address = '/users/' + usernm %>
+            <form action= <%= address %> method="post">
                 <h2>Change password</h2><br>
                 <label>Current password</label><br>
-                <input type="password" id="currentPassword" class="form-control" placeholder="Current Password" required autofocus><br>
+                <input type="password" name="oldPassword" id="currentPassword" class="form-control" required autofocus><br>
                 <label>New Password</label>
-                <input type="password" id="newPassword" class="form-control" placeholder="New Password" required><br>
+                <input type="password" id="newPassword" class="form-control" required><br>
                 <label>Confirm Password</label>
-                <input type="password" id="confirmPassword" class="form-control" placeholder="Confirm Password" required><br><br>
+                <input type="password" name="newPassword" id="confirmPassword" class="form-control" required><br><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Save changes</button><br><br>
             </form>
         </div>

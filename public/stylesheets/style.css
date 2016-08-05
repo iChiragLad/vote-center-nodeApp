@@ -1,15 +1,8 @@
 body {
-  /*padding: 50px;*/
+  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
-}
-
-.navbar {
-  margin: 0px; /*add this*/
-}
-.gridMargin{
-  margin-top: 50px;
 }

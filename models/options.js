@@ -8,7 +8,6 @@ var optionSchema = new Schema({
     optionName : {
         type : String,
         required : true,
-        unique : true
     },
     optionCount : {
         type : Number
