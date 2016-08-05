@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <title>VoteCenter - Poll</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.min.js"></script>
+    <style rel="stylesheet">
+        body {
+            /*padding: 50px;*/
+            font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+        }
+
+        a {
+            color: #00B7FF;
+        }
+
+        .navbar {
+            margin: 0px; /*add this*/
+        }
+        .gridMargin{
+            margin-top: 50px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-default" role = "navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">VoteCenter</a>
+        </div>
+    </div><!-- /.container-fluid -->
+</nav>
+
+<% include ../partials/outerJumbotron %>
+
+<div class="container-fluid">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <form action="" method="">
+                <h2>Which is your favourite player?</h2><br>
+                <h5>By</h5>
+                <h3>Chirag Lad</h3>
+                <hr>
+                <label for="votefor">I'd like to vote for </label><br>
+                <select id="votefor" class="form-control">
+                    <option value="" disabled selected hidden>Choose an option</option>
+                    <option value="virat">Virat Kholi</option>
+                    <option value="dhoni">Dhoni</option>
+                    <option value="ganguly">Ganguly</option>
+                </select><br><br>
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+            </form>
+            <br>
+        </div>
+        <div class="col-md-6">
+            <canvas id="myChart" width="600" height="400"></canvas>
+            <script>
+                var ctx = document.getElementById("myChart").getContext("2d");
+                // pie chart data
+                var data = {
+                    labels: [
+                        "Red",
+                        "Blue",
+                        "Yellow"
+                    ],
+                    datasets: [
+                        {
+                            data: [300, 50, 100],
+                            backgroundColor: [
+                                "#FF6384",
+                                "#36A2EB",
+                                "#FFCE56"
+                            ],
+                            hoverBackgroundColor: [
+                                "#FF6384",
+                                "#36A2EB",
+                                "#FFCE56"
+                            ]
+                        }]
+                };
+                // pie chart options
+                var options = {
+                    segmentShowStroke : false,
+                    animateScale : true
+                };
+                // create pie chart
+                var myPieChart = new Chart(ctx,{
+                    type: 'pie',
+                    data: data,
+                    options: options
+                });
+            </script>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+<footer class="footer" style="background-color: #efefef">
+    <div class="container-fluid">
+        <p class="text-muted text-center">&copy; 2016 Design and Maintained by - Chirag Lad</p>
+    </div>
+</footer>
+
+</body>
+</html>

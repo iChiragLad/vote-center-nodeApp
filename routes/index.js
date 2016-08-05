@@ -17,4 +17,13 @@ router.get('/settings', function(req, res, next){
   res.render('pages/settings', {'title' : 'VoteCenter - Change password'});
 });
 
+
+
+router.get('/poll', function(req, res, next){
+  res.render('pages/poll');
+});
+
+
+
+
 module.exports = router;
