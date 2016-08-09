@@ -4,9 +4,12 @@
 var mongoose = require('mongoose');
 var pollSchema = require('./polls').pollSchema;
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var usersSchema = new Schema({
-    name : {
+    username : String,
+    password : String
+    /*name : {
         type : String,
         required : true
     },
@@ -19,11 +22,9 @@ var usersSchema = new Schema({
         type : String,
         required : true
     },
-    polls : [pollSchema]
-},{
-    timestamp : true
+    polls : [pollSchema]*/
 });
 
-var Users = mongoose.model('User', usersSchema);
+usersSchema.plugin(passportLocalMongoose);
 
-module.exports = Users;
+module.exports = mongoose.model('User', usersSchema);

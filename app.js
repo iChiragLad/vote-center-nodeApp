@@ -5,17 +5,13 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var config = require('./configuration/config');
+var session = require('express-session');
+var passport = require('passport');
+var flash = require('connect-flash');
 
-var url = "mongodb://chirag:admin@ds031835.mlab.com:31835/vote_test";
-mongoose.connect(url);
-var db = mongoose.connection;
-
-db.on('error', function () {
-  console.log('error connecting to db.......');
-});
-db.once('open', function () {
-  console.log('Connected to db......');
-});
+//configure and connect to database
+require('./configuration/database')(mongoose, config);
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -33,6 +29,18 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({
+  secret : config.secret,
+  resave : true,
+  saveUninitialized : false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
+//configuring passport
+require('./configuration/passport')(passport);
+
 
 app.use('/', routes);
 app.use('/users', users);
