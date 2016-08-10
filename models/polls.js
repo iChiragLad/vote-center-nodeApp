@@ -11,8 +11,6 @@ var pollSchema = new Schema({
         required : true
     },
     options : [optionSchema]
-},{
-    timestamp : true
 });
 
 var Polls = mongoose.model('Poll', pollSchema);

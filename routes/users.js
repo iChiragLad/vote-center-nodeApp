@@ -10,8 +10,9 @@ var passport = require('passport');
 /* GET users listing. */
 router.post('/signup', function(req, res, next){
     console.log(req.body);
-    User.register(new User({ username : req.body.username }), req.body.password, function(err, user) {
+    User.register(new User({ email : req.body.email, username : req.body.username }), req.body.password, function(err, user) {
         if (err) {
+            console.log(err);
             req.flash('signupMessage', 'Sorry. That username already exists. Try again.');
             res.redirect('/signup');
         }
@@ -22,7 +23,7 @@ router.post('/signup', function(req, res, next){
         });
     });
 });
-router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: 'Invalid username or password.'}), function(req, res, next){
+router.post('/login', passport.authenticate('local', {failureRedirect: '/login', failureFlash: {type : 'loginMessage', message : 'Invalid username or password.'}}), function(req, res, next){
     res.redirect('/users/dashboard');
 });
 router.get('/dashboard', isLoggedIn, function (req, res, next) {
@@ -47,9 +48,18 @@ router.route('/')
 
 router.route('/:userId')
     .post(function(req, res, next){
-        User.update({name : req.params.userId}, { password: req.body.newPassword }, { multi: true }, function(err, numAffected){
-            if(err) throw err;
-            res.render('pages/newpoll', {'title':'VoteCenter - Dashboard', 'username' : req.params.userId});
+        console.log(req.body);
+        User.findByUsername(req.user.email).then(function(user){
+            if (user){
+                user.setPassword(req.body.newPassword, function(){
+                    user.save();
+                    res.render('pages/newpoll', {'title':'VoteCenter - Dashboard', 'username' : req.params.userId});
+                });
+            } else {
+                res.send('error while changing password');
+            }
+        },function(err){
+            console.error(err);
         });
     });
 

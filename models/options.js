@@ -10,11 +10,9 @@ var optionSchema = new Schema({
         required : true,
     },
     optionCount : {
-        type : Number
-        //required : true
+        type : Number,
+        default : 0
     }
-},{
-    timestamp : true
 });
 
 var Options = mongoose.model('Option', optionSchema);

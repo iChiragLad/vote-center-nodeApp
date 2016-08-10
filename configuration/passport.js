@@ -8,7 +8,7 @@ var User = require('../models/users');
 
 module.exports = function(passport){
     // passport config -- move to seperate module
-    passport.use(new LocalStrategy(User.authenticate()));
+    passport.use(new LocalStrategy({usernameField : 'email', passwordField : 'password'},User.authenticate()));
     passport.serializeUser(User.serializeUser());
     passport.deserializeUser(User.deserializeUser());  
 };

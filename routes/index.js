@@ -6,7 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('pages/index', {'title' : 'VoteCenter - Get opinions instantly'});
 });
 router.get('/login', function(req, res, next) {
-  res.render('pages/login', {'title' : 'VoteCenter - Login', message: req.flash('message')});
+  res.render('pages/login', {'title' : 'VoteCenter - Login', message: req.flash('loginMessage')});
 });
 router.get('/signup', function(req, res, next) {
   res.render('pages/signup', {'title' : 'VoteCenter - Sign up', message: req.flash('signupMessage')});
