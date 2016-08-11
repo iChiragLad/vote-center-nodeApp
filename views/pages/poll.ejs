@@ -53,24 +53,24 @@
     <!-- Example row of columns -->
     <div class="row">
         <div class="col-md-6 text-center">
-            <form action="" method="">
-                <h2>Which is your favourite player?</h2><br>
+            <% var address = encodeURI('http://localhost:3000/answer/' + by + '/' + question) %>
+            <form action= <%= address %> method="post">
+                <h2><%= question %></h2><br>
                 <h5>By</h5>
-                <h3>Chirag Lad</h3>
+                <h3><%= by %></h3>
                 <hr>
                 <label for="votefor">I'd like to vote for </label><br>
-                <select id="votefor" class="form-control">
+                <select name="selection" id="votefor" class="form-control">
                     <option value="" disabled selected hidden>Choose an option</option>
-                    <option value="virat">Virat Kholi</option>
-                    <option value="dhoni">Dhoni</option>
-                    <option value="ganguly">Ganguly</option>
+                    <option value="one"><%= option1 %></option>
+                    <option value="two"><%= option2 %></option>
                 </select><br><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </form>
             <br>
         </div>
         <div class="col-md-6">
-            <canvas id="myChart" width="600" height="400"></canvas>
+            <canvas id="myChart" width="500" height="300"></canvas>
             <script>
                 var ctx = document.getElementById("myChart").getContext("2d");
                 // pie chart data

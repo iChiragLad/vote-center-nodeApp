@@ -13,7 +13,5 @@ var pollSchema = new Schema({
     options : [optionSchema]
 });
 
-var Polls = mongoose.model('Poll', pollSchema);
-
-module.exports.Polls = Polls;
+module.exports.Polls = mongoose.model('Poll', pollSchema);;
 module.exports.pollSchema = pollSchema;

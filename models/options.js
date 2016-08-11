@@ -15,7 +15,5 @@ var optionSchema = new Schema({
     }
 });
 
-var Options = mongoose.model('Option', optionSchema);
-
-module.exports.Options = Options;
+module.exports.Options = mongoose.model('Option', optionSchema);;
 module.exports.optionSchema = optionSchema;
