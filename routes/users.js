@@ -7,7 +7,7 @@ var Poll = require('../models/polls').Polls;
 var Option = require('../models/options').Options;
 var passport = require('passport');
 
-//router.use(express.static(path.join(__dirname,'/../', 'public')));
+router.use(express.static(path.join(__dirname,'/../', 'public')));
 
 /* GET users listing. */
 
@@ -62,27 +62,41 @@ router.post('/link', isLoggedIn, function (req, res, next) {
         });
     });
     var address = encodeURI("http://localhost:3000/share/" + req.user.username + '/poll/' + req.body.question);
-    console.log(address);
     res.render('pages/link', {'title':'VoteCenter - Share', username : req.user.username, link : address});
 });
 //origin - Display all polls
 router.get('/allpolls', isLoggedIn, function (req, res, next) {
-    res.render('pages/allpolls', {'title':'VoteCenter - Dashboard', username : req.user.username});
+    User.findOne({ 'username': req.user.username }, function (err, user) {
+        if (err) throw err;
+        var questions = [];
+        for(var i=0; i<user.polls.length; i++)
+        {
+            questions.push(user.polls[i].question);
+        }
+        res.render('pages/allpolls', {'title':'VoteCenter - Dashboard', username : req.user.username, questions : questions});
+    });
 });
 
-
-
-
-
-
-router.route('/')
-    .get(function(req, res, next){
-        // can be used in Ajax request when user signup, to verify that email is already registered or not
-        //todo
-    })
-    .post(function(req, res, next){
-
-    });
+router.post('/deletepoll/:username/:question', isLoggedIn, function (req, res, next) {
+     User.findOne({ 'username': req.params.username }, function (err, user) {
+        if (err) throw err;
+        for(var i=0; i<user.polls.length; i++)
+        {
+            if(user.polls[i].question === req.params.question){
+                user.polls.splice(i, 1);
+                user.save(function(err){
+                    if(err) throw err;
+                    res.json({message : "success"});
+                });
+            }
+        }
+         process.nextTick(function(){
+             if(i === user.polls.length){
+                 res.json({message : "failure"});
+             }
+         })
+     });
+});
 
 //handler - change password
 router.route('/:userId')
@@ -102,7 +116,6 @@ router.route('/:userId')
         });
     });
 
-router.route('/:userId/polls');
 
 router.route('/:userId/polls/:pollId')
     .get(function(req, res, next){
