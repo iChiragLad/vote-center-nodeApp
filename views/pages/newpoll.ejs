@@ -33,10 +33,16 @@
 <br>
 
 <% include ../partials/footer %>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
-<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/additional-methods.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/jquery.validate.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.0/additional-methods.js"></script>
 <script>
     $('document').ready(function(){
+
+        /*$("#qForm").on('submit', function(){
+            var pattern = /^[a-z0-9\-\s]+$/i;
+            return pattern.test($('question').val());
+        });*/
+
         $.validator.addMethod("questionRegex", function(value, element) {
             return this.optional(element) || /^[a-z0-9\-\s]+$/i.test(value);
         }, "Question must contain only letters and numbers");
