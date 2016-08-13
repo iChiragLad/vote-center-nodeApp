@@ -19,6 +19,7 @@ $(document).ready(function(){
                 success : function(result){
                     if(result.message === 'success'){
                         alert('Poll has been deleted successfully!!');
+                        location.reload();
                     }else{
                         alert('Poll already deleted or error connecting with database at the moment.');
                     }

@@ -29,12 +29,18 @@ router.get('/share/:username/poll/:question', function(req, res, next){
     for(var i in user.polls){
       //username is the variable of the username of the like you want to find
       if(user.polls[i].question == req.params.question){
-        var option1 = user.polls[i].options[0].optionName;
-        var option2 = user.polls[i].options[1].optionName;
+        var option1 = user.polls[i].options[0];
+        var option2 = user.polls[i].options[1];
       }
     }
+    var optionNames = [];
+    var optionCounts = [];
+    optionNames.push(option1.optionName.toString());
+    optionNames.push(option2.optionName.toString());
+    optionCounts.push(option1.optionCount);
+    optionCounts.push(option2.optionCount);
     process.nextTick(function(){
-      res.render('pages/poll', {by : req.params.username, question : req.params.question, option1 : option1, option2 : option2});
+      res.render('pages/poll', {by : req.params.username, question : req.params.question, optionNames : optionNames, optionCounts : optionCounts});
     })
   });
 });
@@ -57,9 +63,7 @@ router.post('/answer/:username/:question', function(req, res, next){
       console.log('Poll updated');
     });
     process.nextTick(function(){
-      //handle client alert using javascript
-      //todo
-      console.log('done');
+      res.redirect('/share/' + req.params.username + '/poll/' + req.params.question);
     })
   });
 });

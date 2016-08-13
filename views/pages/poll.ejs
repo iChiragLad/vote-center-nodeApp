@@ -62,8 +62,8 @@
                 <label for="votefor">I'd like to vote for </label><br>
                 <select name="selection" id="votefor" class="form-control">
                     <option value="" disabled selected hidden>Choose an option</option>
-                    <option value="one"><%= option1 %></option>
-                    <option value="two"><%= option2 %></option>
+                    <option value="one"><%= optionNames[0] %></option>
+                    <option value="two"><%= optionNames[1] %></option>
                 </select><br><br>
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
             </form>
@@ -75,23 +75,17 @@
                 var ctx = document.getElementById("myChart").getContext("2d");
                 // pie chart data
                 var data = {
-                    labels: [
-                        "Red",
-                        "Blue",
-                        "Yellow"
-                    ],
+                    labels: <%- JSON.stringify(optionNames) %>,
                     datasets: [
                         {
-                            data: [300, 50, 100],
+                            data: [<%= optionCounts[0] %>,<%= optionCounts[1] %>],
                             backgroundColor: [
                                 "#FF6384",
                                 "#36A2EB",
-                                "#FFCE56"
                             ],
                             hoverBackgroundColor: [
                                 "#FF6384",
                                 "#36A2EB",
-                                "#FFCE56"
                             ]
                         }]
                 };

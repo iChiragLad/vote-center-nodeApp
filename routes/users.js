@@ -79,22 +79,21 @@ router.get('/allpolls', isLoggedIn, function (req, res, next) {
 
 router.post('/deletepoll/:username/:question', isLoggedIn, function (req, res, next) {
      User.findOne({ 'username': req.params.username }, function (err, user) {
-        if (err) throw err;
+        if (err) console.log(err);
+         console.log('user found');
         for(var i=0; i<user.polls.length; i++)
         {
             if(user.polls[i].question === req.params.question){
+                console.log('polls found');
                 user.polls.splice(i, 1);
+                console.log('poll spliced');
                 user.save(function(err){
-                    if(err) throw err;
+                    if(err) console.log(err);
                     res.json({message : "success"});
                 });
+                console.log('user saved');
             }
         }
-         process.nextTick(function(){
-             if(i === user.polls.length){
-                 res.json({message : "failure"});
-             }
-         })
      });
 });
 
