@@ -61,7 +61,7 @@ router.post('/link', isLoggedIn, function (req, res, next) {
             console.log('Poll inserted');
         });
     });
-    var address = encodeURI("http://localhost:3000/share/" + req.user.username + '/poll/' + req.body.question);
+    var address = encodeURI("https://vote-center.herokuapp.com/share/" + req.user.username + '/poll/' + req.body.question);
     res.render('pages/link', {'title':'VoteCenter - Share', username : req.user.username, link : address});
 });
 //origin - Display all polls

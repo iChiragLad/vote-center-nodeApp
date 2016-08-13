@@ -19,8 +19,8 @@
                 <% questions.forEach(function(question){ %>
                 <li class="list-group-item">
                     <h4><%= question %></h4>
-                    <% var resultAddress = encodeURI('http://localhost:3000/share/' + username + '/poll/' + question) %>
-                    <% var deleteAddress = encodeURI('http://localhost:3000/users/deletepoll/' + username + '/' + question ) %>
+                    <% var resultAddress = encodeURI('https://vote-center.herokuapp.com/share/' + username + '/poll/' + question) %>
+                    <% var deleteAddress = encodeURI('https://vote-center.herokuapp.com/users/deletepoll/' + username + '/' + question ) %>
                     <% var resultId = 'showResult' + c %>
                     <% var deleteId = 'deletePoll' + c %>
                     <a id= <%= resultId %> name="result" class="btn btn-block btn-sm" style="background-color: #3e8f3e" href= <%= resultAddress %>  role="button">Result</a>

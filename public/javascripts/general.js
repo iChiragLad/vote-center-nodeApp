@@ -27,29 +27,5 @@ $(document).ready(function(){
             });
         }
     });
-    /*$('#showResult').on('click', function(e){
-        e.preventDefault();
-        window.open(this.getAttribute('href'));
-    });
-
-    $('#deletePoll').on('click', function(e){
-        e.preventDefault();
-        var address = this.getAttribute('href');
-        $.ajax({
-            url: address,
-            method: 'get',
-            dataType: "json",
-            contentType: 'application/json; charset=utf-8',
-            async : true,
-            data : undefined,
-            success : function(result){
-                if(result.message === 'success'){
-                    alert('Poll has been deleted successfully!!');
-                }else{
-                    alert('Poll already deleted or error connecting with database at the moment.');
-                }
-            }
-        });
-    });*/
 });
 
