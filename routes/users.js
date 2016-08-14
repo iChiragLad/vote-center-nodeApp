@@ -12,7 +12,7 @@ router.use(express.static(path.join(__dirname,'/../', 'public')));
 /* GET users listing. */
 
 // route for facebook authentication and login
-router.get('/facebook', passport.authenticate('facebook', { scope : 'email' }));
+router.get('/facebook', passport.authenticate('facebook', { scope : ['email'] }));
 
 // handle the callback after facebook has authenticated the user
 router.get('/facebook/callback', passport.authenticate('facebook', { successRedirect : '/dashboard', failureRedirect : '/'}));

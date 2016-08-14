@@ -15,10 +15,13 @@ module.exports = function(passport){
     passport.use(new FacebookStrategy({
         clientID        : config.facebookAuth.clientID,
         clientSecret    : config.facebookAuth.clientSecret,
-        callbackURL     : config.facebookAuth.callbackURL
+        callbackURL     : config.facebookAuth.callbackURL,
+        passReqToCallback : true,
+        profileFields: ['id', 'emails', 'name']
     },
     function(token, refreshToken, profile, done){
         process.nextTick(function(){
+            console.log(profile);
             User.findOne({ 'username' : profile.name.givenName }, function(err, user){
                 if (err)
                     return done(err); // user not found
@@ -27,7 +30,7 @@ module.exports = function(passport){
                 }else{
                     var newUser = new User();
                     newUser.username = profile.name.givenName;
-                    newUser.email = "djsc@lkvs.com"//profile.emails[0].value;
+                    newUser.email = profile.emails[0].value;
                     newUser.token = token;
                     newUser.password = "";
 
