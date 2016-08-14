@@ -17,6 +17,7 @@ var usersSchema = new Schema({
         required : true,
         unique : true
     },
+    token : String,
     password : String,
     polls : [pollSchema]
 });
