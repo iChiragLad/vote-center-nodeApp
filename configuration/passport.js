@@ -27,9 +27,9 @@ module.exports = function(passport){
                 }else{
                     var newUser = new User();
                     newUser.username = profile.name.givenName;
-                    newUser.email = profile.emails[0].value;
+                    newUser.email = "djsc@lkvs.com"//profile.emails[0].value;
                     newUser.token = token;
-                    newUser.password = ""
+                    newUser.password = "";
 
                     // save user to the database
                     newUser.save(function(err) {
